@@ -265,7 +265,9 @@ public:
 		this->Hash =
 			this->Hash ?
 			this->Hash :
-			this->CPU.Hash * std::stoull(this->Disk.SerialNumber) * this->SMBIOS.Product[0, 3] * this->SMBIOS.Manufacturer[0, 3];
+			this->CPU.Hash * std::stoull(this->Disk.SerialNumber) 
+				       * this->SMBIOS.Product[0, 3] 
+				       * this->SMBIOS.Manufacturer[0, 3];
 
 		return this->Hash;
 	}
