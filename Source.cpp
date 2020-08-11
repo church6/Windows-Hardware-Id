@@ -278,7 +278,7 @@ public:
 
 
 	std::unique_ptr<HardwareId> Pointer() {
-		return std::make_unique<HardwareId>(this);
+		return std::make_unique<HardwareId>(*this);
 	}
 
 
