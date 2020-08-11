@@ -201,7 +201,7 @@ public:
 		if (hDisk != INVALID_HANDLE_VALUE) {
 			if (DeviceIoControl(hDisk, IOCTL_STORAGE_QUERY_PROPERTY, &QueryInfo, sizeof(QueryInfo),&StorageHeader, sizeof(StorageHeader), &IoRetBytes, nullptr)) {
 				if (auto DiskInfo{ static_cast<STORAGE_DEVICE_DESCRIPTOR*>(malloc(StorageHeader.Size)) }) {
-					DeviceIoControl(hDisk, IOCTL_STORAGE_QUERY_PROPERTY, &QueryInfo, sizeof(QueryInfo), DiskInfo, StorageHeader.Size, &IoRetBytes, nullptr)) {
+					DeviceIoControl(hDisk, IOCTL_STORAGE_QUERY_PROPERTY, &QueryInfo, sizeof(QueryInfo), DiskInfo, StorageHeader.Size, &IoRetBytes, nullptr);
 					CloseHandle(hDisk);
 					return DiskInfo;
 				}
