@@ -271,8 +271,8 @@ public:
 	}
 
 
-	HardwareId* Get() {
-		return this;
+	std::unique_ptr<HardwareId> Pointer() {
+		return std::make_unique<HardwareId>(this);
 	}
 
 
@@ -315,16 +315,16 @@ DWORD64 GetWhitelistedHWID() {
 
 
 int main() {
-	if (auto Hash{ HardwareId().Hash }) {
-		if (auto Whitelisted{ GetWhitelistedHWID() }) {
-			if (Hash != GetWhitelistedHWID()) {
-				std::cout << "Invalid License: " << std::hex << std::uppercase << Hash << " " << Whitelisted;
-			} else {
-				std::cout << "Valid License: " << std::hex << std::uppercase << Hash << " " << Whitelisted;
-			}
-		}
-	}
+    if (auto Hash{ HardwareId().Hash }) {
+	    if (auto Whitelisted{ GetWhitelistedHWID() }) {
+		    if (Hash != GetWhitelistedHWID()) {
+			   std::cout << "Invalid License: " << std::hex << std::uppercase << Hash << " " << Whitelisted;
+		    } else {
+		 	   std::cout << "Valid License: " << std::hex << std::uppercase << Hash << " " << Whitelisted;
+		    }
+	    }
+    }
 
-	getchar();
+    getchar();
     return 0;
 }
