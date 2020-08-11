@@ -90,7 +90,7 @@ private:
 		static T* Buffer{ reinterpret_cast<T*>(VirtualAlloc(nullptr, Size, MEM_COMMIT, PAGE_READWRITE)) };
 		RegGetValueA(HKEY_LOCAL_MACHINE, SubKey, Value, RRF_RT_ANY, nullptr, (PVOID)Buffer, &Size);
 
-		return *Buffer;
+		return Buffer ? *Buffer : reinterpret_cast<T>(NULL);
 	}
 
 	const char* GetHKLM(const char* SubKey, const char* Value) {
