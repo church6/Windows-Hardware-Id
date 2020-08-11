@@ -182,7 +182,9 @@ private:
 		this->CPU.ProcessorLevel = ProcessorInfo.wProcessorLevel;
 		this->CPU.ActiveProcessorMask = ProcessorInfo.dwActiveProcessorMask;
 
-		static std::vector <DWORD> CPUFeatures({ 25, 24, 26, 27, 18, 7, 16, 2, 14, 15, 23, 1, 0, 3, 12, 9, 8, 22, 20, 13, 21, 6, 10, 17, 29, 30, 31, 34 });
+		static std::vector <DWORD> CPUFeatures({ 
+			25, 24, 26, 27, 18, 7, 16, 2, 14, 15, 23, 1, 0, 3, 12, 9, 8, 22, 20, 13, 21, 6, 10, 17, 29, 30, 31, 34 
+		});
 
 		for (int i = 0; i < CPUFeatures.size(); i++) {
 			if (IsProcessorFeaturePresent(CPUFeatures.at(i))) {
@@ -191,7 +193,9 @@ private:
 			} else {
 				CPUFeatures.erase(CPUFeatures.begin() + i);
 			}
-		} this->CPU.Features = &CPUFeatures;
+		} 
+		
+		this->CPU.Features = &CPUFeatures;
 
 
 		//
