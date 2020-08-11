@@ -29,7 +29,7 @@ Product
 
 CPU
 -------------
-Processor Features (raw and hashed)
+Processor Features
 
 Architecture
 
@@ -53,9 +53,3 @@ Install Time
 Install Date
 
 Build GUID
-
-
-
-------------------------------------------------------------------------------------------------------------------------------------------
-A unique hash is created from the disk serial number, processor features, processor archetecture, SMBIOS manufacturer, and SMBIOS product.
-------------------------------------------------------------------------------------------------------------------------------------------
