@@ -258,7 +258,27 @@ public:
 		return ProcessorInfo;
 	}
 
+	
+	static bool IsHypervisorPresent() {
+		auto RdtscDifference{ [] () -> DWORD64 {
+			DWORD64 CurrentTSC{ __rdtsc() };
+			int r[4]{ 0 };
+			__cpuid(r, 1);
 
+			return __rdtsc() - CurrentTSC;
+		}};
+
+		DWORD64 Average{ 0 };
+
+		for (int i = 0; i < 10; i++) {
+			Average += RdtscDifference();
+			Sleep(500);
+		} 
+		
+		return (Average /= 10 > 1000 && Average < 0);
+	}
+
+	
 	std::unique_ptr<HardwareId> Pointer() {
 		return std::make_unique<HardwareId>(*this);
 	}
