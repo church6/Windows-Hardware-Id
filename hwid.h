@@ -105,7 +105,7 @@ private:
 
 
 		RawSMBIOSData* FirmwareTable{ QuerySMBIOS() };
-		DMI_HEADER* Header{ reinterpret_cast<DMI_HEADER*>(FirmwareTable->SMBIOSTableData) };
+		DMI_HEADER* Header{ reinterpret_cast<DMI_HEADER*>(&FirmwareTable->SMBIOSTableData) };
 
 		this->SMBIOS.Manufacturer = SMBIOSToString(Header, reinterpret_cast<BYTE*>(Header)[0x4]);
 		this->SMBIOS.Product = SMBIOSToString(Header, reinterpret_cast<BYTE*>(Header)[0x5]);
