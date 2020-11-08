@@ -250,8 +250,6 @@ public:
 		for (int i = 0; i < CPUFeatures.size(); i++) {
 			if (IsProcessorFeaturePresent(CPUFeatures.at(i))) {
 				OutFeatures.push_back(CPUFeatures.at(i));
-			} else {
-				CPUFeatures.erase(CPUFeatures.begin() + i);
 			}
 		} 
 
